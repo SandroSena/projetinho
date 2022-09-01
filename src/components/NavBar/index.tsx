@@ -116,7 +116,7 @@ const NavBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to={'/login'}>
+            <Link to={'/login'} style={{textDecoration: 'none'}}>
               <Button
                 key={'Login'}
                 onClick={handleCloseNavMenu}
@@ -125,7 +125,7 @@ const NavBar = () => {
                 Login
               </Button>
             </Link>
-            <Link to={'/home'}>
+            <Link to={'/home'} style={{textDecoration: 'none'}}>
               <Button
                 key={'Home'}
                 onClick={handleCloseNavMenu}
