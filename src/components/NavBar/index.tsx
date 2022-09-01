@@ -125,15 +125,6 @@ const NavBar = () => {
                 Login
               </Button>
             </Link>
-            <Link to={'/home'} style={{textDecoration: 'none'}}>
-              <Button
-                key={'Home'}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Home
-              </Button>
-            </Link>
             <Link to={'/peoples'} style={{textDecoration: 'none'}}>
               <Button
                 key={'Peoples'}

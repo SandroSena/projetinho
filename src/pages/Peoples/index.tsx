@@ -1,37 +1,37 @@
 import { Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import List from '../../components/List';
+import { ListContainer } from './styles';
 
-type PeopleType = {
-  name: String;
-  age: Number;
-  id?: Number;
+export type PeopleType = {
+  name: string;
+  age: number;
+  id?: string;
 };
 
 export const peoplesList: PeopleType[] = [
   {
     name: 'Sandro',
     age: 30,
-    id: 1,
+    id: '1',
   },
   {
     name: 'Laura',
     age: 24,
-    id: 2,
+    id: '2',
+  },
+  {
+    name: 'Celso',
+    age: 24,
+    id: '3',
   },
 ];
 
 const Peoples = () => {
   return (
-    <>
-      <Typography align='center' variant='h3'>
-        Peoples Page
-      </Typography>
-      {peoplesList.map((people) => (
-        <Link to={`${people.id}`}>
-          <p>{people.name}</p>
-        </Link>
-      ))}
-    </>
+    <ListContainer>
+      <Typography variant='h3'>Peoples Page</Typography>
+      <List />
+    </ListContainer>
   );
 };
 
