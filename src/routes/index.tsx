@@ -7,8 +7,6 @@ const AppRoutes = (): JSX.Element => {
   return (
     <Routes>
       <Route
-        path="/" element={<NavBar />} />
-      <Route
         path="/login" element={<Login />} />
       <Route
         path="/home" element={<Home />}
