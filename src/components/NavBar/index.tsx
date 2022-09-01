@@ -134,6 +134,15 @@ const NavBar = () => {
                 Home
               </Button>
             </Link>
+            <Link to={'/peoples'} style={{textDecoration: 'none'}}>
+              <Button
+                key={'Peoples'}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Peoples
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
