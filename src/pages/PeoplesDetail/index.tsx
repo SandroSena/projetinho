@@ -6,7 +6,6 @@ import { PeopleContainer } from './styles';
 const PeoplesDetail = () => {
   const { id } = useParams();
 
-  // const people: PeopleType | undefined = peoplesList.find((p) => p.id === id);
   const people: PeopleType | undefined = peoplesList.find((p) => p.id === id);
 
   console.log(id);
