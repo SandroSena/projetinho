@@ -3,10 +3,14 @@ import Form from '../../components/Form';
 import { RegisterContainer } from './styles';
 
 const Register = () => {
-  return <RegisterContainer>
-    <Typography variant='h3' align='center'>Register Page</Typography>
-    <Form />
-  </RegisterContainer>
+  return (
+    <RegisterContainer>
+      <Typography variant='h3' align='center' marginBottom='50px'>
+        Register Page
+      </Typography>
+      <Form />
+    </RegisterContainer>
+  );
 };
 
 export default Register;

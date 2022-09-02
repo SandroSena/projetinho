@@ -38,7 +38,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="absolute" color="primary">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -57,7 +57,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            PROJETINHO
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,7 +113,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            PROJETINHO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link to={'/login'} style={{ textDecoration: 'none' }}>

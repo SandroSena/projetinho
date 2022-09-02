@@ -1,5 +1,5 @@
-import { Box, Button, Stack, TextField } from "@mui/material";
-import { FormContainer } from "./styles";
+import { Box, Button, TextField } from "@mui/material";
+import { FormContainer, ButtonContainer } from "./styles";
 
 const Form: React.FC = () => {
   return (
@@ -22,10 +22,10 @@ const Form: React.FC = () => {
           label="Password"
           type="password"
         />
-        <Stack direction="row" spacing={6}>
+        <ButtonContainer>
           <Button variant="contained" size='large'>Login</Button>
           <Button variant="contained" size='large'>Register</Button>
-        </Stack>
+        </ButtonContainer>
       </FormContainer>
     </Box>
   )

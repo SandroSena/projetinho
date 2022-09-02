@@ -6,7 +6,7 @@ import AppRoutes from './routes';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import NavBar from './components/NavBar';
+import AppLayout from './components/Layout';
 
 const darkTheme = createTheme({
   palette: {
@@ -22,8 +22,9 @@ root.render(
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <React.StrictMode>
-        <NavBar />
-        <AppRoutes />
+        <AppLayout>
+          <AppRoutes />
+        </AppLayout>
       </React.StrictMode>
     </ThemeProvider>
   </BrowserRouter>
