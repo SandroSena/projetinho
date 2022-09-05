@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { APIContainer, FilmsContainer } from './style';
 
 const ConsumindoAPI: React.FC = () => {
@@ -9,19 +9,33 @@ const ConsumindoAPI: React.FC = () => {
   }
 
   const [films, setFilms] = useState<FilmsType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getFilms();
   }, []);
 
   const getFilms = async () => {
+    setLoading(true);
+
     const result = await fetch('https://swapi.dev/api/films');
     const response = await result.json();
-    setFilms(response.results);
-    console.log(response.results);
+
+    if (!response) {
+      setLoading(false);
+      return console.log('Deu Merda');
+    } else {
+      setLoading(false);
+      setFilms(response.results);
+      console.log(response.results);
+    }
   };
 
-  return (
+  return loading ? (
+    <APIContainer>
+      <CircularProgress />
+    </APIContainer>
+  ) : (
     <APIContainer>
       <Typography variant='h4'>Consumindo API</Typography>
       <FilmsContainer>
