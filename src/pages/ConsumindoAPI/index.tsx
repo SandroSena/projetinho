@@ -6,6 +6,7 @@ import { APIContainer, FilmsContainer } from './style';
 const ConsumindoAPI: React.FC = () => {
   interface FilmsType {
     title?: string;
+    director?: string;
   }
 
   const [films, setFilms] = useState<FilmsType[]>([]);
@@ -40,7 +41,10 @@ const ConsumindoAPI: React.FC = () => {
       <Typography variant='h4'>Consumindo API</Typography>
       <FilmsContainer>
         {films.map((film) => (
-          <Typography variant='h5'>{film.title}</Typography>
+          <>
+            <Typography variant='h5'>{`Films: ${film.title}`}</Typography>
+            <Typography variant='h5'>{`Director: ${film.director}`}</Typography>
+          </>
         ))}
       </FilmsContainer>
     </APIContainer>
