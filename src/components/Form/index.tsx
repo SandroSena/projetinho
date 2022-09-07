@@ -1,34 +1,34 @@
-import { Box, Button, TextField } from "@mui/material";
-import { FormContainer, ButtonContainer } from "./styles";
+import { Box, Button, TextField } from '@mui/material';
+import { FormContainer, ButtonContainer } from './styles';
 
 const Form: React.FC = () => {
   return (
     <Box
-      component="form"
+      component='form'
       sx={{
-        '& .MuiTextField-root': { m: 1.2, width: '30ch' },
+        '& .MuiTextField-root': { margin: 1.2, width: '30ch' },
       }}
-      autoComplete="off"
+      autoComplete='off'
     >
       <FormContainer>
+        <TextField required id='outlined-required' label='Login' />
         <TextField
           required
-          id="outlined-required"
-          label="Login"
-        />
-        <TextField
-          required
-          id="outlined-password-input"
-          label="Password"
-          type="password"
+          id='outlined-password-input'
+          label='Password'
+          type='password'
         />
         <ButtonContainer>
-          <Button variant="contained" size='large'>Login</Button>
-          <Button variant="contained" size='large'>Register</Button>
+          <Button variant='contained' size='large'>
+            Login
+          </Button>
+          <Button variant='contained' size='large'>
+            Register
+          </Button>
         </ButtonContainer>
       </FormContainer>
     </Box>
-  )
-}
+  );
+};
 
 export default Form;

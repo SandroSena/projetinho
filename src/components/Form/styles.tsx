@@ -13,7 +13,7 @@ export const FormContainer = styled.div`
 export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-flow: column wrap;
   padding: 10px;
-  gap: 10px;
+  gap: 14px;
 `;
