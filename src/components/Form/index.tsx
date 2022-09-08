@@ -1,12 +1,49 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
+
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { FormContainer, ButtonContainer } from './styles';
 
 const Form: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const switchModeHandler = () => {
     setIsLogin((prevState) => !prevState);
+  };
+
+  const emailChangeHandler = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordChangeHandler = (e: any) => {
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = async (e: any) => {
+    e?.preventDefault();
+
+    console.log('RECEBA');
+
+    let url;
+    if (isLogin) {
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`;
+    } else {
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`;
+    }
+    const result = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+        returnSecureToken: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    console.log(result);
   };
 
   return (
@@ -33,16 +70,24 @@ const Form: React.FC = () => {
         </Typography>
       )}
       <FormContainer>
-        <TextField required id='outlined-required' label='Email' />
+        <TextField
+          required
+          id='outlined-required'
+          label='Email'
+          value={email}
+          onChange={emailChangeHandler}
+        />
         <TextField
           required
           id='outlined-password-input'
           label='Password'
           type='password'
+          value={password}
+          onChange={passwordChangeHandler}
         />
         {isLogin ? (
           <ButtonContainer>
-            <Button variant='contained' size='large'>
+            <Button variant='contained' size='large' onClick={submitHandler}>
               Login
             </Button>
             <Button
@@ -55,7 +100,7 @@ const Form: React.FC = () => {
           </ButtonContainer>
         ) : (
           <ButtonContainer>
-            <Button variant='contained' size='large'>
+            <Button variant='contained' size='large' onClick={submitHandler}>
               Create Account
             </Button>
             <Button
