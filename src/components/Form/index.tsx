@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import { Box, Button, TextField, Typography } from '@mui/material';
-import { FormContainer, ButtonContainer } from './styles';
+import { Box, Button, TextField, Typography, CircularProgress } from '@mui/material';
+import { FormContainer, ButtonContainer, CircularProgressContainer } from './styles';
 
 const Form: React.FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -22,8 +23,7 @@ const Form: React.FC = () => {
 
   const submitHandler = async (e: any) => {
     e?.preventDefault();
-
-    console.log('RECEBA');
+    setIsLoading(true);
 
     let url;
     if (isLogin) {
@@ -31,6 +31,7 @@ const Form: React.FC = () => {
     } else {
       url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`;
     }
+
     const result = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
@@ -42,6 +43,13 @@ const Form: React.FC = () => {
         'Content-Type': 'application/json',
       },
     });
+
+    if (result.ok) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+      alert('Deu Merda!')
+    }
 
     console.log(result);
   };
@@ -70,13 +78,14 @@ const Form: React.FC = () => {
         </Typography>
       )}
       <FormContainer>
-        <TextField
+         <TextField
           required
           id='outlined-required'
           label='Email'
           value={email}
           onChange={emailChangeHandler}
         />
+    
         <TextField
           required
           id='outlined-password-input'
@@ -85,11 +94,13 @@ const Form: React.FC = () => {
           value={password}
           onChange={passwordChangeHandler}
         />
-        {isLogin ? (
+      {isLogin ? (
           <ButtonContainer>
+            {!isLoading &&
             <Button variant='contained' size='large' onClick={submitHandler}>
               Login
-            </Button>
+            </Button>}
+            {isLoading && <CircularProgressContainer><CircularProgress/></CircularProgressContainer>}
             <Button
               variant='contained'
               size='large'
@@ -100,9 +111,11 @@ const Form: React.FC = () => {
           </ButtonContainer>
         ) : (
           <ButtonContainer>
+             {!isLoading &&
             <Button variant='contained' size='large' onClick={submitHandler}>
               Create Account
-            </Button>
+            </Button>}
+            {isLoading && <><CircularProgress/></>}
             <Button
               variant='contained'
               size='large'

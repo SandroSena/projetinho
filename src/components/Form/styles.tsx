@@ -17,3 +17,9 @@ export const ButtonContainer = styled.div`
   padding: 10px;
   gap: 14px;
 `;
+
+export const CircularProgressContainer = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+` 
