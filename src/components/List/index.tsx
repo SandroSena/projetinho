@@ -17,10 +17,22 @@ const SelectedListItem: React.FC = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: 'background.paper',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <List component='nav' aria-label='secondary mailbox folder'>
         {peoplesList.map((people) => (
-          <Link to={`${people.id}`} style={{textDecoration: 'none', color: '#fff'}}>
+          <Link
+            to={`${people.id}`}
+            style={{ textDecoration: 'none', color: '#fff' }}
+          >
             <ListItemButton
               selected={selectedIndex === 2}
               onClick={(event) => handleListItemClick(event, 2)}

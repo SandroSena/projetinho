@@ -1,7 +1,17 @@
 import { useState } from 'react';
 
-import { Box, Button, TextField, Typography, CircularProgress } from '@mui/material';
-import { FormContainer, ButtonContainer, CircularProgressContainer } from './styles';
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  CircularProgress,
+} from '@mui/material';
+import {
+  FormContainer,
+  ButtonContainer,
+  CircularProgressContainer,
+} from './styles';
 
 const Form: React.FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -32,7 +42,7 @@ const Form: React.FC = () => {
       url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`;
     }
 
-    const result = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -42,16 +52,22 @@ const Form: React.FC = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-    });
-
-    if (result.ok) {
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-      alert('Deu Merda!')
-    }
-
-    console.log(result);
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res);
+        if (res.error) {
+          setIsLoading(false);
+          alert(res.error.message);
+        } else {
+          alert('Deu Bom!');
+          setIsLoading(false);
+        }
+      })
+      .catch(() => {
+        setIsLoading(false);
+        alert('Não conseguimos bater na API');
+      });
   };
 
   return (
@@ -78,14 +94,14 @@ const Form: React.FC = () => {
         </Typography>
       )}
       <FormContainer>
-         <TextField
+        <TextField
           required
           id='outlined-required'
           label='Email'
           value={email}
           onChange={emailChangeHandler}
         />
-    
+
         <TextField
           required
           id='outlined-password-input'
@@ -94,13 +110,18 @@ const Form: React.FC = () => {
           value={password}
           onChange={passwordChangeHandler}
         />
-      {isLogin ? (
+        {isLogin ? (
           <ButtonContainer>
-            {!isLoading &&
-            <Button variant='contained' size='large' onClick={submitHandler}>
-              Login
-            </Button>}
-            {isLoading && <CircularProgressContainer><CircularProgress/></CircularProgressContainer>}
+            {!isLoading && (
+              <Button variant='contained' size='large' onClick={submitHandler}>
+                Login
+              </Button>
+            )}
+            {isLoading && (
+              <CircularProgressContainer>
+                <CircularProgress />
+              </CircularProgressContainer>
+            )}
             <Button
               variant='contained'
               size='large'
@@ -111,11 +132,16 @@ const Form: React.FC = () => {
           </ButtonContainer>
         ) : (
           <ButtonContainer>
-             {!isLoading &&
-            <Button variant='contained' size='large' onClick={submitHandler}>
-              Create Account
-            </Button>}
-            {isLoading && <><CircularProgress/></>}
+            {!isLoading && (
+              <Button variant='contained' size='large' onClick={submitHandler}>
+                Create Account
+              </Button>
+            )}
+            {isLoading && (
+              <CircularProgressContainer>
+                <CircularProgress />
+              </CircularProgressContainer>
+            )}
             <Button
               variant='contained'
               size='large'
