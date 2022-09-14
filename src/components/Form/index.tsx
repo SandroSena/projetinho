@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import {
   Box,
@@ -12,8 +12,11 @@ import {
   ButtonContainer,
   CircularProgressContainer,
 } from './styles';
+import AuthContext from '../../store/auth-context';
 
 const Form: React.FC = () => {
+  const authCtx = useContext(AuthContext);
+
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState<string>('');
@@ -54,11 +57,12 @@ const Form: React.FC = () => {
       },
     })
       .then((response) => response.json())
-      .then((res) => {
-        console.log(res);
-        if (res.error) {
+      .then((result) => {
+        authCtx.login(result.idToken);
+        console.log(result);
+        if (result.error) {
           setIsLoading(false);
-          alert(res.error.message);
+          alert(result.error.message);
         } else {
           alert('Deu Bom!');
           setIsLoading(false);

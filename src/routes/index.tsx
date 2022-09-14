@@ -4,7 +4,14 @@ import Login from '../pages/Login';
 import Peoples from '../pages/Peoples';
 import PeoplesDetail from '../pages/PeoplesDetail';
 
+import { useContext } from 'react';
+import AuthContext from '../store/auth-context';
+
 const AppRoutes = (): JSX.Element => {
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
+
   return (
     <Routes>
       <Route path='/login' element={<Login />} />

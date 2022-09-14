@@ -7,6 +7,7 @@ import AppRoutes from './routes';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/Layout';
+import { AuthContextProvider } from './store/auth-context';
 
 const darkTheme = createTheme({
   palette: {
@@ -18,14 +19,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <React.StrictMode>
-        <AppLayout>
-          <AppRoutes />
-        </AppLayout>
-      </React.StrictMode>
-    </ThemeProvider>
-  </BrowserRouter>
+  <AuthContextProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <React.StrictMode>
+          <AppLayout>
+            <AppRoutes />
+          </AppLayout>
+        </React.StrictMode>
+      </ThemeProvider>
+    </BrowserRouter>
+  </AuthContextProvider>
 );
