@@ -34,7 +34,7 @@ const Form: React.FC = () => {
     setPassword(event.target.value);
   };
 
-  const submitHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const submitHandler = async (event: any) => {
     event?.preventDefault();
     setIsLoading(true);
 
