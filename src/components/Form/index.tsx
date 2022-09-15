@@ -67,13 +67,13 @@ const Form: React.FC = () => {
       .then((response) => response.json())
       .then((result) => {
         authCtx.login(result.idToken);
-        navigate('/peoples');
         console.log(result);
         if (result.error) {
           setIsLoading(false);
           alert(result.error.message);
         } else {
           alert('Deu Bom!');
+          navigate('/peoples');
           setIsLoading(false);
         }
       })
