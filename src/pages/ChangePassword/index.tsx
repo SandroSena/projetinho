@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Button, TextField, Typography } from '@mui/material';
 import { ButtonContainer, InputContainer, MainContainer } from './styles';
 
 const ChangePassword = () => {
-  const [newPassword, setNewPassword] = useState('');
+  const [newPassword, setNewPassword] = useState<string>('');
 
-  const passwordChangeHandler = (event: any) => {
+  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(event.target.value);
   };
 

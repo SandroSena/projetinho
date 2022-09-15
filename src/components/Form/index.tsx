@@ -26,16 +26,16 @@ const Form: React.FC = () => {
     setIsLogin((prevState) => !prevState);
   };
 
-  const emailChangeHandler = (e: any) => {
-    setEmail(e.target.value);
+  const emailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
   };
 
-  const passwordChangeHandler = (e: any) => {
-    setPassword(e.target.value);
+  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
   };
 
-  const submitHandler = async (e: any) => {
-    e?.preventDefault();
+  const submitHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    event?.preventDefault();
     setIsLoading(true);
 
     let url;
