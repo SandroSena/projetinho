@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../store/auth-context';
 
 import { Button, TextField, Typography } from '@mui/material';
 import { ButtonContainer, InputContainer, MainContainer } from './styles';
 
 const ChangePassword = () => {
+  const authCtx = useContext(AuthContext);
+
   const [newPassword, setNewPassword] = useState<string>('');
 
   const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(event.target.value);
   };
 
-  const submitNewPasswordHandler = () => {
-    console.log('Ueon');
+  const submitNewPasswordHandler = (event: any) => {
+    event.preventDefault();
+
+    fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${process.env.REACT_APP_API_KEY}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          idToken: authCtx.token,
+          password: newPassword,
+          returnSecureToken: false,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    ).then((res) => {
+      alert('Deu certo!!!');
+      console.log(res);
+    });
   };
 
   return (
@@ -29,6 +50,7 @@ const ChangePassword = () => {
           label='New Password'
           value={newPassword}
           onChange={passwordChangeHandler}
+          type={'password'}
         />
       </InputContainer>
       <ButtonContainer>

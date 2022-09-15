@@ -19,7 +19,9 @@ const AppRoutes = (): JSX.Element => {
       <Route path='/peoples' element={<Peoples />} />
       <Route path='/peoples/:id' element={<PeoplesDetail />} />
       <Route path='/consumindoAPI' element={<ConsumindoAPI />} />
-      <Route path='/changePassword' element={<ChangePassword />} />
+      {isLoggedIn && (
+        <Route path='/changePassword' element={<ChangePassword />} />
+      )}
     </Routes>
   );
 };

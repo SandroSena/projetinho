@@ -1,5 +1,9 @@
 import { useState, useContext } from 'react';
 
+import AuthContext from '../../store/auth-context';
+
+import { useNavigate } from 'react-router-dom';
+
 import {
   Box,
   Button,
@@ -7,15 +11,17 @@ import {
   Typography,
   CircularProgress,
 } from '@mui/material';
+
 import {
   FormContainer,
   ButtonContainer,
   CircularProgressContainer,
 } from './styles';
-import AuthContext from '../../store/auth-context';
 
 const Form: React.FC = () => {
   const authCtx = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +36,9 @@ const Form: React.FC = () => {
     setEmail(event.target.value);
   };
 
-  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const passwordChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setPassword(event.target.value);
   };
 
@@ -59,6 +67,7 @@ const Form: React.FC = () => {
       .then((response) => response.json())
       .then((result) => {
         authCtx.login(result.idToken);
+        navigate('/peoples');
         console.log(result);
         if (result.error) {
           setIsLoading(false);
