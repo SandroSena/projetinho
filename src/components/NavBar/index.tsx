@@ -147,6 +147,15 @@ const NavBar = () => {
                 Consumindo API
               </Button>
             </Link>
+            <Link to={'/changePassword'} style={{ textDecoration: 'none' }}>
+              <Button
+                key={'ChangePassword'}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Change Password
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

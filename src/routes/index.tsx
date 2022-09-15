@@ -3,6 +3,7 @@ import ConsumindoAPI from '../pages/ConsumindoAPI';
 import Login from '../pages/Login';
 import Peoples from '../pages/Peoples';
 import PeoplesDetail from '../pages/PeoplesDetail';
+import ChangePassword from '../pages/ChangePassword';
 
 import { useContext } from 'react';
 import AuthContext from '../store/auth-context';
@@ -18,6 +19,7 @@ const AppRoutes = (): JSX.Element => {
       <Route path='/peoples' element={<Peoples />} />
       <Route path='/peoples/:id' element={<PeoplesDetail />} />
       <Route path='/consumindoAPI' element={<ConsumindoAPI />} />
+      <Route path='/changePassword' element={<ChangePassword />} />
     </Routes>
   );
 };
