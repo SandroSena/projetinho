@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useContext } from 'react';
 import AuthContext from '../../store/auth-context';
@@ -22,6 +22,8 @@ const NavBar = () => {
   const authCtx = useContext(AuthContext);
 
   const isLoggedIn = authCtx.isLoggedIn;
+
+  const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -37,6 +39,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     authCtx.logout();
+    navigate('/login');
   };
 
   return (
@@ -152,7 +155,7 @@ const NavBar = () => {
             {isLoggedIn && (
               <Button
                 key={'Profile'}
-                onClick={handleLogout}
+                onClick={() => {}}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Profile

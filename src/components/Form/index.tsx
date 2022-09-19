@@ -36,9 +36,7 @@ const Form: React.FC = () => {
     setEmail(event.target.value);
   };
 
-  const passwordChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
@@ -73,7 +71,7 @@ const Form: React.FC = () => {
           alert(result.error.message);
         } else {
           alert('Deu Bom!');
-          navigate('/peoples');
+          navigate('/');
           setIsLoading(false);
         }
       })
