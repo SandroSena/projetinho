@@ -36,7 +36,9 @@ const Form: React.FC = () => {
     setEmail(event.target.value);
   };
 
-  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const passwordChangeHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setPassword(event.target.value);
   };
 
@@ -64,7 +66,10 @@ const Form: React.FC = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        authCtx.login(result.idToken);
+        const expirationTime = new Date(
+          new Date().getTime() + +result.expiresIn * 1000
+        );
+        authCtx.login(result.idToken, expirationTime.toISOString());
         console.log(result);
         if (result.error) {
           setIsLoading(false);
