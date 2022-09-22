@@ -14,7 +14,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useContext } from 'react';
-import AuthContext from '../../store/auth-context';
+import AuthContext from '../../context/auth-context';
 
 const pages = ['Login', 'Home'];
 

@@ -7,7 +7,7 @@ import AppRoutes from './routes';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppLayout from './components/Layout';
-import { AuthContextProvider } from './store/auth-context';
+import { AuthContextProvider } from './context/auth-context';
 
 const darkTheme = createTheme({
   palette: {

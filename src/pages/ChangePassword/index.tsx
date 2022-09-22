@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import AuthContext from '../../store/auth-context';
+import AuthContext from '../../context/auth-context';
 
 import { Button, TextField, Typography } from '@mui/material';
 import { ButtonContainer, InputContainer, MainContainer } from './styles';
