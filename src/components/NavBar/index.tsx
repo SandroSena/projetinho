@@ -38,7 +38,7 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    authCtx.logout();
+    authCtx.onLogout();
     navigate('/login');
   };
 

@@ -5,8 +5,8 @@ let logoutTimer: any;
 const AuthContext = React.createContext({
   token: '',
   isLoggedIn: false,
-  login: (token: string, expirationTime: any) => {},
-  logout: () => {},
+  onLogin: (token: string, expirationTime: any) => {},
+  onLogout: () => {},
 });
 
 const calculateRemainingTime = (expirationTime: any) => {
@@ -71,8 +71,8 @@ export const AuthContextProvider = (props: any) => {
   const contextValue: any = {
     token: token,
     isLoggedIn: userIsLoggedIn,
-    login: loginHandler,
-    logout: logoutHandler,
+    onLogin: loginHandler,
+    onLogout: logoutHandler,
   };
 
   return (

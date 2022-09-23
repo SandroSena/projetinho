@@ -67,7 +67,7 @@ const Form: React.FC = () => {
       .then((response) => response.json())
       .then((result) => {
         const expirationTime = new Date(new Date().getTime() + +result.expiresIn * 1000);
-        authCtx.login(result.idToken, expirationTime.toISOString());
+        authCtx.onLogin(result.idToken, expirationTime.toISOString());
         console.log(result);
 
         if (result.error) {
