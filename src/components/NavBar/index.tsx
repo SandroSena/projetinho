@@ -153,13 +153,15 @@ const NavBar = () => {
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {isLoggedIn && (
-              <Button
-                key={'Profile'}
-                onClick={() => {}}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Profile
-              </Button>
+              <Link to={'/profile'} style={{ textDecoration: 'none' }}>
+                <Button
+                  key={'Profile'}
+                  onClick={() => {}}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Profile
+                </Button>
+              </Link>
             )}
             <Link to={'/login'} style={{ textDecoration: 'none' }}>
               {!isLoggedIn ? (

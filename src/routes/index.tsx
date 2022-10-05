@@ -9,6 +9,7 @@ import Home from '../pages/Home';
 
 import { useContext } from 'react';
 import AuthContext from '../context/auth-context';
+import Profile from '../pages/Profile';
 
 const AppRoutes = (): JSX.Element => {
   const authCtx = useContext(AuthContext);
@@ -23,6 +24,7 @@ const AppRoutes = (): JSX.Element => {
       {authCtx.isLoggedIn && (
         <Route path='/changePassword' element={<ChangePassword />} />
       )}
+      {authCtx.isLoggedIn && <Route path='/profile' element={<Profile />} />}
     </Routes>
   );
 };
