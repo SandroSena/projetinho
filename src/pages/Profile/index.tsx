@@ -7,6 +7,8 @@ const Profile = () => {
 
   const yourToken = authCtx.token;
 
+  console.log(yourToken);
+
   return (
     <>
       <Typography
