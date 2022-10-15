@@ -7,7 +7,7 @@ const Profile = () => {
 
   const yourToken = authCtx.token;
 
-  console.log(yourToken + 'Foi');
+  console.log(yourToken);
 
   return (
     <>
