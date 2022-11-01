@@ -24,7 +24,7 @@ const ConsumindoAPI: React.FC = () => {
 
     if (!response) {
       setLoading(false);
-      return console.log('Deu Merda!');
+      return console.log('Deu merda meu parceiro!');
     } else {
       setLoading(false);
       setFilms(response.results);
