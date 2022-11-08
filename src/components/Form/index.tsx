@@ -73,6 +73,7 @@ const Form: React.FC = () => {
         if (result.error) {
           setIsLoading(false);
           alert(result.error.message);
+          console.log("éOclima")
         } else {
           alert('Deu Bom!');
           navigate('/');
