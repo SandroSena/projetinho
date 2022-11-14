@@ -74,7 +74,7 @@ const Form: React.FC = () => {
           setIsLoading(false);
           alert(result.error.message);
         } else {
-          alert('Deu Bom!!!');
+          alert('Deu Bom!');
           navigate('/');
           setIsLoading(false);
         }
