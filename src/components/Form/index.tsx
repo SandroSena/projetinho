@@ -81,7 +81,7 @@ const Form: React.FC = () => {
       })
       .catch(() => {
         setIsLoading(false);
-        alert('Não conseguimos bater na API!');
+        alert('Não conseguimos bater na API, tem alguma coisa errada!');
       });
   };
 
