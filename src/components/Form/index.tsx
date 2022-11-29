@@ -74,14 +74,14 @@ const Form: React.FC = () => {
           setIsLoading(false);
           alert(result.error.message);
         } else {
-          alert('Deu Bom!!!');
+          alert('Deu Bom!');
           navigate('/');
           setIsLoading(false);
         }
       })
       .catch(() => {
         setIsLoading(false);
-        alert('Não conseguimos bater na API!!!');
+        alert('Não conseguimos bater na API!');
       });
   };
 
