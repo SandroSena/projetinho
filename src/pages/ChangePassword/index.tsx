@@ -30,7 +30,7 @@ const ChangePassword = () => {
         },
       }
     ).then((res) => {
-      alert('Deu certo!');
+      alert('Deu certo!!!');
       console.log(res);
     });
   };
